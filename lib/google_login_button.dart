@@ -18,18 +18,39 @@ class _GoogleLoginButtonState extends State<GoogleLoginButton> {
 
   @override
   Widget build(BuildContext context) {
-    return isLoading
-        ? Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CircularProgressIndicator())
-        : SizedBox(
-            width: double.infinity,
-            child: RaisedButton(
-              color: Colors.redAccent.shade200.withOpacity(0.8),
-              textTheme: ButtonTextTheme.primary,
-              child: Text('Login with Google'),
-              onPressed: () {},
-            ),
-          );
+    return Column(
+      children: <Widget>[
+        (error.length >= 1 && !isLoading)
+            ? Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Text(
+                    error,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.red),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                ],
+              )
+            : Container(),
+        isLoading
+            ? Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CircularProgressIndicator())
+            : SizedBox(
+                width: double.infinity,
+                child: RaisedButton(
+                  color: Colors.redAccent.shade200.withOpacity(0.8),
+                  textTheme: ButtonTextTheme.primary,
+                  child: Text('Login with Google'),
+                  onPressed: () {},
+                ),
+              ),
+      ],
+    );
   }
 }

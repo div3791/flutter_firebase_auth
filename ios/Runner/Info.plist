@@ -41,18 +41,19 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-    <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>fb525711221540882</string>
-      </array>
-      </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>525711221540882</string>
-    <key>FacebookDisplayName</key>
-    <string>FlutterFirebaseAuth</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.341516730950-161k1fd0au398bug8apc099u99vska0r</string>
+				<string>fb525711221540882</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>525711221540882</string>
+	<key>FacebookDisplayName</key>
+	<string>FlutterFirebaseAuth</string>
 </dict>
 </plist>

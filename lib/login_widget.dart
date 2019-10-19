@@ -159,6 +159,7 @@ class _LoginWidgetState extends State<LoginWidget> {
       _formKey.currentState.save();
       setState(() {
         isLoading = true;
+        error = '';
       });
       try {
         await auth.signInWithEmailAndPassword(email, password);

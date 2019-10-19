@@ -53,6 +53,7 @@ class _FacebookLoginButtonState extends State<FacebookLoginButton> {
                       try {
                         setState(() {
                           isLoading = true;
+                          error = '';
                         });
                         await auth.signInWithFacebook();
                         Navigator.of(context).pushReplacement(
@@ -65,11 +66,16 @@ class _FacebookLoginButtonState extends State<FacebookLoginButton> {
                         });
                       } on PlatformException catch (e) {
                         setState(() {
-                          isLoading = false;
-                        });
-                        setState(() {
                           print(e.code);
                           error = ErrorHandling.getErrorMessage(e);
+                        });
+                      } on StateError catch (e) {
+                        setState(() {
+                          error = e.message;
+                        });
+                      } finally {
+                        setState(() {
+                          isLoading = false;
                         });
                       }
                     },

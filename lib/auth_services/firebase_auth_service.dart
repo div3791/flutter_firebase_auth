@@ -55,11 +55,10 @@ class FirebaseAuthService extends Auth {
           }
           break;
         case FacebookLoginStatus.cancelledByUser:
-          debugPrint('cancelled by user');
-          return null;
+          throw StateError('Facebook SignIn aborted by user');
           break;
         case FacebookLoginStatus.error:
-          debugPrint('Error by facebook');
+          throw StateError('Something went wrong');
           break;
         default:
           return null;
@@ -70,13 +69,17 @@ class FirebaseAuthService extends Auth {
   }
 
   @override
-  Future<User> signInWithGoogle() {
+  Future<User> signInWithGoogle() async {
     return null;
   }
 
   @override
-  Future<void> signOut() {
-    return _firebaseAuth.signOut();
+  Future<void> signOut() async {
+    final facebookLogin = FacebookLogin();
+    if (facebookLogin != null) {
+      await facebookLogin.logOut();
+    }
+    return await _firebaseAuth.signOut();
   }
 
   @override
