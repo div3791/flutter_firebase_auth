@@ -36,6 +36,7 @@ class HomePage extends StatelessWidget {
                 children: <Widget>[
                   Text('Name : ${user?.name ?? ''}'),
                   Text('Email ID : ${user?.emailId ?? ''}'),
+                  Text('UserID : ${user?.uid ?? ''}'),
                 ],
               ),
             );

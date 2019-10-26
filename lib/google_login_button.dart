@@ -47,7 +47,33 @@ class _GoogleLoginButtonState extends State<GoogleLoginButton> {
                   color: Colors.redAccent.shade200.withOpacity(0.8),
                   textTheme: ButtonTextTheme.primary,
                   child: Text('Login with Google'),
-                  onPressed: () {},
+                  onPressed: () async {
+                    try {
+                      setState(() {
+                        isLoading = true;
+                        error = '';
+                      });
+                      await auth.signInWithGoogle();
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (_) => HomePage(),
+                        ),
+                      );
+                      setState(() {
+                        isLoading = false;
+                      });
+                    } on PlatformException catch (e) {
+                      setState(() {
+                        error = ErrorHandling.getErrorMessage(e);
+                        isLoading = false;
+                      });
+                    } on StateError catch (e) {
+                      setState(() {
+                        error = e.message;
+                        isLoading = false;
+                      });
+                    }
+                  },
                 ),
               ),
       ],

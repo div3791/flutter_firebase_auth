@@ -7,6 +7,7 @@ import 'package:flutter_firebase_auth/auth_services/firebase_auth_service.dart';
 import 'package:flutter_firebase_auth/facebook_login_button.dart';
 import 'package:flutter_firebase_auth/google_login_button.dart';
 import 'package:flutter_firebase_auth/home.dart';
+import 'package:flutter_firebase_auth/phone_number_login_widget.dart';
 import 'package:flutter_firebase_auth/sign_up_widget.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -145,6 +146,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                   ),
                   FacebookLoginButton(),
                   GoogleLoginButton(),
+                  SizedBox(
+                    width: double.infinity,
+                    child: RaisedButton(
+                      color: Colors.blue,
+                      textTheme: ButtonTextTheme.primary,
+                      child: Text('Login with Phone Number'),
+                      onPressed: () => Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => PhoneNumberLoginWidget())),
+                    ),
+                  ),
                 ],
               ),
             ),
